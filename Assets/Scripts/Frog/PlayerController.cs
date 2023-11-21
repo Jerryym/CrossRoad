@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +19,10 @@ public class PlayerController : MonoBehaviour
     /// frog自身的动画组件
     /// </summary>
     private Animator anim;
+    /// <summary>
+    /// 
+    /// </summary>
+    private SpriteRenderer spRender;
 
     /// <summary>
     /// 单位跳跃长度，默认2.1
@@ -43,9 +46,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private bool m_bHold = false;
     /// <summary>
-    /// 是否跳跃了
+    /// 是否跳跃
     /// </summary>
-    private bool m_bJumped = false;
+    private bool m_bJump = false;
     /// <summary>
     /// 是否可以跳跃
     /// </summary>
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
         //获取Frog对应的Rigidbody2D组件
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spRender = GetComponent<SpriteRenderer>();
     }
 
     /// <summary>
@@ -70,7 +74,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (m_bJumped)
+        if (m_bJump)
         {
             rb.position = Vector2.Lerp(transform.position, m_Destination, 0.134f);
         }
@@ -88,6 +92,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 触发保持函数
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //左右侧空气墙对应的Tag == Border，当碰撞到空气墙时，游戏结束
+        if (collision.CompareTag("Border") == true)
+        {
+            Debug.Log("Border: Game Over!");
+        }
+
+        if (m_bJump == false && collision.CompareTag("Obstacle") == true)
+        {
+            Debug.Log("Border: Game Over!");
+        }
+    }
+
     #region Input Event
     /// <summary>
     /// 点按跳跃
@@ -96,7 +118,7 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         //TODO: 执行跳跃，跳跃的距离，记录分数，播放跳跃的音效
-        if (context.performed && !m_bJumped)
+        if (context.performed && !m_bJump)
         {
             m_MoveDistance = jumpDistance;
             m_bCanJump = true;
@@ -109,14 +131,14 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     public void LongJump(InputAction.CallbackContext context)
     {
-        if (context.performed && !m_bJumped)
+        if (context.performed && !m_bJump)
         {
             m_MoveDistance = jumpDistance * 2;
             m_bHold = true;
         }
 
         //长按结束且处于当前为长按状态
-        if (context.canceled && m_bHold && !m_bJumped)
+        if (context.canceled && m_bHold && !m_bJump)
         {
             m_bCanJump = true;
             m_bHold = false;
@@ -155,6 +177,7 @@ public class PlayerController : MonoBehaviour
     public void JumpTrigger()
     {
         m_bCanJump = false;
+        Debug.Log(m_enDir);
         switch (m_enDir)
         {
             case enDirection.enUP:
@@ -162,13 +185,13 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("IsSide", false);
                 //获取跳跃后的坐标
                 m_Destination = new Vector2(transform.position.x, transform.position.y + m_MoveDistance);
-                transform.localScale = Vector3.one;
                 break;
             case enDirection.enLeft:
                 //修改动画切换参数
                 anim.SetBool("IsSide", true);
                 //获取跳跃后的坐标
                 m_Destination = new Vector2(transform.position.x - m_MoveDistance, transform.position.y);
+                //修改缩放矩阵 Vector3.one = (1, 1, 1)
                 transform.localScale = Vector3.one;
                 break;
             case enDirection.enRight:
@@ -176,6 +199,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("IsSide", true);
                 //获取跳跃后的坐标
                 m_Destination = new Vector2(transform.position.x + m_MoveDistance, transform.position.y);
+                //修改缩放矩阵
                 transform.localScale = new Vector3(-1, 1, 1);
                 break;
         }
@@ -191,7 +215,10 @@ public class PlayerController : MonoBehaviour
     public void StartJumpAnimationEvent()
     {
         //动画开始，改变已经跳跃的状态
-        m_bJumped = true;
+        m_bJump = true;
+
+        //修改排序图层
+        spRender.sortingLayerName = "Top Layer";
     }
 
     /// <summary>
@@ -200,7 +227,10 @@ public class PlayerController : MonoBehaviour
     public void FinishJumpAnimationEvent()
     {
         //动画结束，重置已经跳跃的状态
-        m_bJumped = false;
+        m_bJump = false;
+
+        //修改排序图层
+        spRender.sortingLayerName = "Middle Layer";
     }
     #endregion
 }
