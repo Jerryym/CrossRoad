@@ -20,7 +20,11 @@ public class TerrainManager : MonoBehaviour
     /// <summary>
     /// 上一次生成的地形对应的List索引
     /// </summary>
-    private int m_lastIndex;
+    private int m_lastIndex = -1;
+    /// <summary>
+    /// 上一次生成的地形对应的坐标
+    /// </summary>
+    private Vector3 m_LastPosition;
 
     private void OnEnable()
     {
@@ -62,8 +66,42 @@ public class TerrainManager : MonoBehaviour
         {
             iIndex = Random.Range(0, terrainObjs.Count);
         }
-        m_lastIndex = iIndex;
         terrainObj = terrainObjs[iIndex];
+
+        //第一次出现的场景不可为Road
+        if (m_lastIndex == -1 && terrainObj.name == "Road")
+        {
+            while (terrainObj.name == "Road")
+            {
+                iIndex = Random.Range(0, terrainObjs.Count);
+                terrainObj = terrainObjs[iIndex];
+            }
+        }
+
+        //判断新的地形是否和当前地形重叠
+        if (m_lastIndex != -1)
+        {
+            var LastBoxSize = terrainObjs[m_lastIndex].GetComponent<BoxCollider2D>().size;
+            var NewBoxSize = terrainObj.GetComponent<BoxCollider2D>().size;
+            float rNewOffsetY = (LastBoxSize.y + NewBoxSize.y) / 2 + 0.5f;
+            transform.position = new Vector3(0, m_LastPosition.y + rNewOffsetY, 0);
+
+            Debug.Log("1.2-Name: " + terrainObjs[m_lastIndex].name + ", position = " + m_LastPosition + "rNewOffsetY: " + rNewOffsetY);
+            Debug.Log("2.2-Name: " + terrainObj.name + ", position = " + transform.position);
+        }
+        else
+        {
+            var BoxSize = terrainObjs[iIndex].GetComponent<BoxCollider2D>().size;
+            float rNewOffsetY = BoxSize.y / 2 + offsetY / 2  + 1.2f;
+            transform.position = new Vector3(0, Camera.main.transform.position.y + rNewOffsetY, 0);
+
+            Debug.Log("1.1-Name: " + terrainObjs[iIndex].name + ", position = " + m_LastPosition + "rNewOffsetY: " + rNewOffsetY);
+            Debug.Log("2.1-Name: " + terrainObj.name + ", position = " + transform.position);
+        }
+
+        //实例化新地形
+        m_lastIndex = iIndex;
+        m_LastPosition = transform.position;
         Instantiate(terrainObj, transform.position, Quaternion.identity);
     }
 

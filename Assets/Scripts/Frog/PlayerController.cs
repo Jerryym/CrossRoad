@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         if (m_bIsJump == false && collision.CompareTag("Water") == true)
         {
             //获取青蛙从其坐标发射出的射线并与之相交的模型
-            Physics2D.RaycastNonAlloc(transform.position + Vector3.up * 0.12f, Vector2.zero, results);
+            Physics2D.RaycastNonAlloc(transform.position + Vector3.up * 0.1f, Vector2.zero, results);
             bool bInWater = true;
             foreach (var hit2D in results)
             {
@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //触发Jump动画
-        anim.SetTrigger("Jump");
+        anim.SetBool("Jump", true);
     }
 
     #region Animation Event
@@ -310,6 +310,7 @@ public class PlayerController : MonoBehaviour
     public void FinishJumpAnimationEvent()
     {
         //动画结束，重置已经跳跃的状态
+        anim.SetBool("Jump", false);
         m_bIsJump = false;
 
         //修改排序图层
