@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //触发Jump动画
-        anim.SetBool("Jump", true);
+        anim.SetTrigger("Jump");
     }
 
     #region Animation Event
@@ -310,7 +310,6 @@ public class PlayerController : MonoBehaviour
     public void FinishJumpAnimationEvent()
     {
         //动画结束，重置已经跳跃的状态
-        anim.SetBool("Jump", false);
         m_bIsJump = false;
 
         //修改排序图层
