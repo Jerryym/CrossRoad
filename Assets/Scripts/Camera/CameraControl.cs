@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour
     public float offsetY;
 
     /// <summary>
-    /// 相机初始大小
+    /// 相机缩放大小
     /// </summary>
     public float zoomBase;
 
@@ -30,7 +30,7 @@ public class CameraControl : MonoBehaviour
     private void Start()
     {
         m_rRatio = (float)Screen.height/ (float)Screen.width;
-        Camera.main.orthographicSize = zoomBase;
+        Camera.main.orthographicSize = zoomBase * m_rRatio * 0.5f;
     }
 
     /// <summary>
