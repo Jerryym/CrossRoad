@@ -58,6 +58,17 @@
                 },
                 {
                     "name": "",
+                    "id": "997b745e-3b7e-4203-bcf3-012294ef3380",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "254adf19-a223-43b3-aa15-fbd27fbebd37",
                     "path": "<Touchscreen>/Press",
                     "interactions": "",
@@ -80,8 +91,30 @@
                 },
                 {
                     "name": "",
+                    "id": "a380d61c-6906-4b54-9686-819a0294d02d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Long Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e05ab0f6-96f2-4e8e-9ad2-ba7255ac5fb5",
                     "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch Poisition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b851d3dc-eeb4-4ed1-8a53-727352213f66",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

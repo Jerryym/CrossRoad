@@ -1,15 +1,17 @@
 %YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
+%TAG !u! tag:yousandi.cn,2023:
 --- !u!29 &1
 OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_OcclusionBakeSettings:
-    smallestOccluder: 5
-    smallestHole: 0.25
-    backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
+  serializedVersion: 3
   m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionEnabled: 0
+  m_DisplayOccluded: 0
+  m_SceneDepthBufferWidth: 512
+  m_SceneDepthBufferHeight: 512
+  m_ShadowDepthBufferWidth: 512
+  m_ShadowDepthBufferHeight: 512
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -38,7 +40,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -72,7 +73,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 0
+    m_BakeBackend: 2
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
@@ -129,11 +130,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 112290681}
   - component: {fileID: 112290682}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,6 +174,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -213,11 +217,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 127048024}
   - component: {fileID: 127048025}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,6 +261,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -297,11 +304,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 146322529}
   - component: {fileID: 146322530}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,6 +348,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -381,11 +391,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 149570543}
   - component: {fileID: 149570544}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Riverbank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,6 +435,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -465,13 +478,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 165531887}
   - component: {fileID: 165531889}
   - component: {fileID: 165531888}
   - component: {fileID: 165531890}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Game Over
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,11 +574,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 168493874}
   - component: {fileID: 168493875}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,6 +618,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -644,11 +661,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 169465945}
   - component: {fileID: 169465946}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: ListView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +731,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 247062168}
   - component: {fileID: 247062167}
@@ -723,6 +741,7 @@ GameObject:
   - component: {fileID: 247062170}
   - component: {fileID: 247062173}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,6 +765,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -987,13 +1008,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 330373801}
   - component: {fileID: 330373804}
   - component: {fileID: 330373803}
   - component: {fileID: 330373802}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,12 +1141,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 351833840}
   - component: {fileID: 351833842}
   - component: {fileID: 351833841}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: GameOver Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,11 +1334,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 414301281}
   - component: {fileID: 414301282}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,6 +1378,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1395,11 +1421,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 430359358}
   - component: {fileID: 430359359}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: LeaderBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1453,11 +1480,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 449735431}
   - component: {fileID: 449735430}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: TerrainMgr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,12 +1532,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 455628519}
   - component: {fileID: 455628521}
   - component: {fileID: 455628520}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1579,11 +1608,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 460345335}
   - component: {fileID: 460345336}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,6 +1652,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1776,13 +1808,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1843,6 +1876,8 @@ Camera:
   m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 0
+  m_enableGDRP: 1
+  m_backfaceCulling: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
@@ -1891,11 +1926,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 533527725}
   - component: {fileID: 533527726}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,6 +1970,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1975,13 +2013,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 621990166}
   - component: {fileID: 621990165}
   - component: {fileID: 621990164}
   - component: {fileID: 621990163}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Canvas BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2077,11 +2116,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 671482466}
   - component: {fileID: 671482467}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Origin Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2150,13 +2190,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 702332716}
   - component: {fileID: 702332719}
   - component: {fileID: 702332718}
   - component: {fileID: 702332717}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: ReStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2282,11 +2323,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 782005870}
   - component: {fileID: 782005871}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2325,6 +2367,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2366,7 +2410,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 783344147}
   - component: {fileID: 783344146}
@@ -2374,6 +2418,7 @@ GameObject:
   - component: {fileID: 783344144}
   - component: {fileID: 783344148}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2412,7 +2457,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1176, y: 2048}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2486,11 +2531,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 817550429}
   - component: {fileID: 817550430}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2529,6 +2575,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2570,11 +2618,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 836860197}
   - component: {fileID: 836860198}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2613,6 +2662,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2659,12 +2710,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 943865848}
   - component: {fileID: 943865847}
   - component: {fileID: 943865849}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2737,12 +2789,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 970847437}
   - component: {fileID: 970847439}
   - component: {fileID: 970847438}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2812,11 +2865,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1000323146}
   - component: {fileID: 1000323145}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2840,6 +2894,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2896,11 +2952,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1008929492}
   - component: {fileID: 1008929493}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2939,6 +2996,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2985,11 +3044,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1216497767}
   - component: {fileID: 1216497768}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3028,6 +3088,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3069,11 +3131,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1236325667}
   - component: {fileID: 1236325668}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3112,6 +3175,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3153,11 +3218,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1239920292}
   - component: {fileID: 1239920293}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3196,6 +3262,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3237,11 +3305,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1266966919}
   - component: {fileID: 1266966920}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3280,6 +3349,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3321,13 +3392,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1269642290}
   - component: {fileID: 1269642292}
   - component: {fileID: 1269642291}
   - component: {fileID: 1269642293}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3416,11 +3488,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1288986595}
   - component: {fileID: 1288986596}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Border Right
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -3493,11 +3566,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1349604517}
   - component: {fileID: 1349604518}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3536,6 +3610,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3693,12 +3769,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1391947489}
   - component: {fileID: 1391947491}
   - component: {fileID: 1391947490}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3768,11 +3845,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1392450774}
   - component: {fileID: 1392450775}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3811,6 +3889,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3852,12 +3932,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1426017028}
   - component: {fileID: 1426017030}
   - component: {fileID: 1426017029}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3933,13 +4014,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1433657734}
   - component: {fileID: 1433657737}
   - component: {fileID: 1433657736}
   - component: {fileID: 1433657735}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: ReStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4065,11 +4147,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1439927814}
   - component: {fileID: 1439927815}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4108,6 +4191,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4149,11 +4234,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1453783799}
   - component: {fileID: 1453783800}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs03 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4192,6 +4278,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4233,11 +4321,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1480103985}
   - component: {fileID: 1480103986}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Border Left
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -4310,11 +4399,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1530973914}
   - component: {fileID: 1530973915}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4353,6 +4443,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4394,12 +4486,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1572408267}
   - component: {fileID: 1572408269}
   - component: {fileID: 1572408268}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4469,11 +4562,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1574432824}
   - component: {fileID: 1574432825}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4512,6 +4606,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4736,11 +4832,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1714269576}
   - component: {fileID: 1714269577}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4779,6 +4876,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4820,13 +4919,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1730326331}
   - component: {fileID: 1730326334}
   - component: {fileID: 1730326333}
   - component: {fileID: 1730326332}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4952,12 +5052,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1810946079}
   - component: {fileID: 1810946081}
   - component: {fileID: 1810946080}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5027,13 +5128,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 1867468607}
   - component: {fileID: 1867468610}
   - component: {fileID: 1867468609}
   - component: {fileID: 1867468608}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: LeaderBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5385,11 +5487,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2119143362}
   - component: {fileID: 2119143363}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: accs04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5428,6 +5531,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5469,12 +5574,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 2133534933}
   - component: {fileID: 2133534935}
   - component: {fileID: 2133534934}
   m_Layer: 5
+  m_HasEditorInfo: 1
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5605,11 +5711,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 6248390970690664477}
   - component: {fileID: 3306935517421446491}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Street
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5633,6 +5740,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5691,11 +5800,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 6671730825924639576}
   - component: {fileID: 6671730825924639577}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5719,6 +5829,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5760,11 +5872,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 6141447351753112247}
   - component: {fileID: 3465691017246587511}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: SpawnPoint A
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -5945,11 +6058,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 7884248191022321098}
   - component: {fileID: 8320478058434423651}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5962,11 +6076,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 8050722937338415961}
   - component: {fileID: 4465758952411499219}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6058,11 +6173,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
+  serializedVersion: 7
   m_Component:
   - component: {fileID: 7269354412999078760}
   - component: {fileID: 6874431804873315630}
   m_Layer: 0
+  m_HasEditorInfo: 1
   m_Name: SpawnPoint B
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -6188,6 +6304,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_virtualGeometry: 0
+  m_virtualGeometryShadow: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

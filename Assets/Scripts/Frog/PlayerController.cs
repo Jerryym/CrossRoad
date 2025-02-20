@@ -5,329 +5,329 @@ using UnityEngine.InputSystem.HID;
 
 public class PlayerController : MonoBehaviour
 {
-    /// <summary>
-    /// Î»ÖÃÃ¶¾Ù
-    /// </summary>
-    private enum enDirection
-    {
-        enUP, enLeft, enRight
-    }
+	/// <summary>
+	/// ä½ç½®æšä¸¾
+	/// </summary>
+	private enum enDirection
+	{
+		enUP, enLeft, enRight
+	}
 
-    /// <summary>
-    /// frog×ÔÉíµÄ¸ÕÌå×é¼ş
-    /// </summary>
-    private Rigidbody2D rb;
-    /// <summary>
-    /// frog×ÔÉíµÄ¶¯»­×é¼ş
-    /// </summary>
-    private Animator anim;
-    /// <summary>
-    /// frog×ÔÉíµÄäÖÈ¾×é¼ş
-    /// </summary>
-    private SpriteRenderer spRender;
-    /// <summary>
-    /// frog×ÔÉíµÄÊäÈë×é¼ş
-    /// </summary>
-    private PlayerInput playerInput;
-    /// <summary>
-    /// frog×ÔÉíµÄÅö×²×é¼ş
-    /// </summary>
-    private BoxCollider2D boxColl;
+	/// <summary>
+	/// frogè‡ªèº«çš„åˆšä½“ç»„ä»¶
+	/// </summary>
+	private Rigidbody2D rb;
+	/// <summary>
+	/// frogè‡ªèº«çš„åŠ¨ç”»ç»„ä»¶
+	/// </summary>
+	private Animator anim;
+	/// <summary>
+	/// frogè‡ªèº«çš„æ¸²æŸ“ç»„ä»¶
+	/// </summary>
+	private SpriteRenderer spRender;
+	/// <summary>
+	/// frogè‡ªèº«çš„è¾“å…¥ç»„ä»¶
+	/// </summary>
+	private PlayerInput playerInput;
+	/// <summary>
+	/// frogè‡ªèº«çš„ç¢°æ’ç»„ä»¶
+	/// </summary>
+	private BoxCollider2D boxColl;
 
-    [Header("Score")]
-    public int stepScore = 10;
-    private int m_iTotalScore = 0;
+	[Header("Score")]
+	public int stepScore = 10;
+	private int m_iTotalScore = 0;
 
-    [Header("Jump")]
-    /// <summary>
-    /// µ¥Î»ÌøÔ¾³¤¶È£¬Ä¬ÈÏ2.1
-    /// </summary>
-    public float jumpDistance = 2.1f;
-    /// <summary>
-    /// ÒÆ¶¯³¤¶È
-    /// </summary>
-    private float m_MoveDistance = 0.0f;
-    /// <summary>
-    /// Frog ¶ÔÓ¦µÄ×ø±êÎ»ÖÃ
-    /// </summary>
-    private Vector2 m_Destination;
-    /// <summary>
-    /// µã»÷×ø±êÎ»ÖÃ
-    /// </summary>
-    private Vector2 m_TouchPosition;
+	[Header("Jump")]
+	/// <summary>
+	/// å•ä½è·³è·ƒé•¿åº¦ï¼Œé»˜è®¤2.1
+	/// </summary>
+	public float jumpDistance = 2.1f;
+	/// <summary>
+	/// ç§»åŠ¨é•¿åº¦
+	/// </summary>
+	private float m_MoveDistance = 0.0f;
+	/// <summary>
+	/// Frog å¯¹åº”çš„åæ ‡ä½ç½®
+	/// </summary>
+	private Vector2 m_Destination;
+	/// <summary>
+	/// ç‚¹å‡»åæ ‡ä½ç½®
+	/// </summary>
+	private Vector2 m_TouchPosition;
 
-    /// <summary>
-    /// ÊÇ·ñÎª³¤°´²Ù×÷
-    /// </summary>
-    private bool m_bHold = false;
-    /// <summary>
-    /// ÊÇ·ñÌøÔ¾
-    /// </summary>
-    private bool m_bIsJump = false;
-    /// <summary>
-    /// ÊÇ·ñ¿ÉÒÔÌøÔ¾
-    /// </summary>
-    private bool m_bCanJump = false;
-    /// <summary>
-    /// ÇàÍÜËù´¦Î»ÖÃ
-    /// </summary>
-    private enDirection m_enDir = enDirection.enUP;
-    /// <summary>
-    /// Åö×²µ½µÄÎïÌå
-    /// </summary>
-    private RaycastHit2D[] results = new RaycastHit2D[3];
-    /// <summary>
-    /// ÊÇ·ñËÀÍö
-    /// </summary>
-    private bool m_bIsDead = false;
+	/// <summary>
+	/// æ˜¯å¦ä¸ºé•¿æŒ‰æ“ä½œ
+	/// </summary>
+	private bool m_bHold = false;
+	/// <summary>
+	/// æ˜¯å¦è·³è·ƒ
+	/// </summary>
+	private bool m_bIsJump = false;
+	/// <summary>
+	/// æ˜¯å¦å¯ä»¥è·³è·ƒ
+	/// </summary>
+	private bool m_bCanJump = false;
+	/// <summary>
+	/// é’è›™æ‰€å¤„ä½ç½®
+	/// </summary>
+	private enDirection m_enDir = enDirection.enUP;
+	/// <summary>
+	/// ç¢°æ’åˆ°çš„ç‰©ä½“
+	/// </summary>
+	private RaycastHit2D[] results = new RaycastHit2D[3];
+	/// <summary>
+	/// æ˜¯å¦æ­»äº¡
+	/// </summary>
+	private bool m_bIsDead = false;
 
-    /// <summary>
-    /// Ó¦ÓÃ³ÌĞòÔËĞĞÊ±£¬³õÊ¼»¯¶ÔÓ¦¶ÔÏóµÄ±äÁ¿ºÍ×´Ì¬
-    /// </summary>
-    private void Awake()
-    {
-        //»ñÈ¡Frog¶ÔÓ¦µÄRigidbody2D×é¼ş
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        spRender = GetComponent<SpriteRenderer>();
-        playerInput = GetComponent<PlayerInput>();
-        boxColl = GetComponent<BoxCollider2D>();
-    }
+	/// <summary>
+	/// åº”ç”¨ç¨‹åºè¿è¡Œæ—¶ï¼Œåˆå§‹åŒ–å¯¹åº”å¯¹è±¡çš„å˜é‡å’ŒçŠ¶æ€
+	/// </summary>
+	private void Awake()
+	{
+		//è·å–Frogå¯¹åº”çš„Rigidbody2Dç»„ä»¶
+		rb = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator>();
+		spRender = GetComponent<SpriteRenderer>();
+		playerInput = GetComponent<PlayerInput>();
+		boxColl = GetComponent<BoxCollider2D>();
+	}
 
-    /// <summary>
-    /// ¹Ì¶¨µÄÊ±¼ä¼ä¸ô£¬½øĞĞÏà¹ØÎïÀí¼ÆËã£ºFrogµ±Ç°×ø±ê¼ÆËã
-    /// </summary>
-    private void FixedUpdate()
-    {
-        if (m_bIsJump)
-        {
-            rb.position = Vector2.Lerp(transform.position, m_Destination, 0.134f);
-        }
-    }
+	/// <summary>
+	/// å›ºå®šçš„æ—¶é—´é—´éš”ï¼Œè¿›è¡Œç›¸å…³ç‰©ç†è®¡ç®—ï¼šFrogå½“å‰åæ ‡è®¡ç®—
+	/// </summary>
+	private void FixedUpdate()
+	{
+		if (m_bIsJump)
+		{
+			rb.position = Vector2.Lerp(transform.position, m_Destination, 0.134f);
+		}
+	}
 
-    /// <summary>
-    /// ¸üĞÂ×´Ì¬
-    /// </summary>
-    private void Update()
-    {
-        if (m_bIsDead == true)
-        {
-            DisableInput();
-            return;
-        }
+	/// <summary>
+	/// æ›´æ–°çŠ¶æ€
+	/// </summary>
+	private void Update()
+	{
+		if (m_bIsDead == true)
+		{
+			DisableInput();
+			return;
+		}
 
-        if (m_bCanJump == true)
-        {
-            //´¥·¢ÌøÔ¾¶¯»­
-            JumpTrigger();
-        }
-    }
+		if (m_bCanJump == true)
+		{
+			//è§¦å‘è·³è·ƒåŠ¨ç”»
+			JumpTrigger();
+		}
+	}
 
-    /// <summary>
-    /// ´¥·¢±£³Öº¯Êı
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        //×óÓÒ²à¿ÕÆøÇ½¶ÔÓ¦µÄTag == Border£¬µ±Åö×²µ½¿ÕÆøÇ½Ê±£¬ÓÎÏ·½áÊø
-        if (collision.CompareTag("Border") == true || collision.CompareTag("Car") == true)
-        {
-            Debug.Log("Border: Game Over!");
-            m_bIsDead = true;
-        }
+	/// <summary>
+	/// è§¦å‘ä¿æŒå‡½æ•°
+	/// </summary>
+	/// <param name="collision"></param>
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		//å·¦å³ä¾§ç©ºæ°”å¢™å¯¹åº”çš„Tag == Borderï¼Œå½“ç¢°æ’åˆ°ç©ºæ°”å¢™æ—¶ï¼Œæ¸¸æˆç»“æŸ
+		if (collision.CompareTag("Border") == true || collision.CompareTag("Car") == true)
+		{
+			Debug.Log("Border: Game Over!");
+			m_bIsDead = true;
+		}
 
-        //ÅĞ¶ÏÇàÍÜÊÇ·ñÂäµ½Ğ¡ºÓÉÏ
-        if (m_bIsJump == false && collision.CompareTag("Water") == true)
-        {
-            //»ñÈ¡ÇàÍÜ´ÓÆä×ø±ê·¢Éä³öµÄÉäÏß²¢ÓëÖ®Ïà½»µÄÄ£ĞÍ
-            Physics2D.RaycastNonAlloc(transform.position + Vector3.up * 0.1f, Vector2.zero, results);
-            bool bInWater = true;
-            foreach (var hit2D in results)
-            {
-                if (hit2D.collider == null) continue;
-                if (hit2D.collider.CompareTag("Wood") == true)
-                {
-                    Debug.Log("On the Wood!");
-                    transform.SetParent(hit2D.collider.transform);
-                    bInWater = false;
-                }
-            }
+		//åˆ¤æ–­é’è›™æ˜¯å¦è½åˆ°å°æ²³ä¸Š
+		if (m_bIsJump == false && collision.CompareTag("Water") == true)
+		{
+			//è·å–é’è›™ä»å…¶åæ ‡å‘å°„å‡ºçš„å°„çº¿å¹¶ä¸ä¹‹ç›¸äº¤çš„æ¨¡å‹
+			Physics2D.RaycastNonAlloc(transform.position + Vector3.up * 0.1f, Vector2.zero, results);
+			bool bInWater = true;
+			foreach (var hit2D in results)
+			{
+				if (hit2D.collider == null) continue;
+				if (hit2D.collider.CompareTag("Wood") == true)
+				{
+					Debug.Log("On the Wood!");
+					transform.SetParent(hit2D.collider.transform);
+					bInWater = false;
+				}
+			}
 
-            //ÈôÂäÈëË®ÖĞ£¬ÔòÓÎÏ·½áÊø
-            if (bInWater == true && m_bIsJump == false)
-            {
-                Debug.Log("Water: Game Over!");
-                m_bIsDead = true;
-            }
-        }
+			//è‹¥è½å…¥æ°´ä¸­ï¼Œåˆ™æ¸¸æˆç»“æŸ
+			if (bInWater == true && m_bIsJump == false)
+			{
+				Debug.Log("Water: Game Over!");
+				m_bIsDead = true;
+			}
+		}
 
-        if (m_bIsJump == false && collision.CompareTag("Obstacle") == true)
-        {
-            Debug.Log("Obstacle: Game Over!");
-            m_bIsDead = true;
-        }
+		if (m_bIsJump == false && collision.CompareTag("Obstacle") == true)
+		{
+			Debug.Log("Obstacle: Game Over!");
+			m_bIsDead = true;
+		}
 
-        //ËÀÍö´¥·¢game overµÄUI
-        if (m_bIsDead == true)
-        {
-            //Í¨ÖªÓÎÏ·½áÊø
-            EventHandler.CallGameOverEvent();
-            //È¡ÏûÅö×²¼ì²â
-            boxColl.enabled = false;
-        }
-    }
+		//æ­»äº¡è§¦å‘game overçš„UI
+		if (m_bIsDead == true)
+		{
+			//é€šçŸ¥æ¸¸æˆç»“æŸ
+			EventHandler.CallGameOverEvent();
+			//å–æ¶ˆç¢°æ’æ£€æµ‹
+			boxColl.enabled = false;
+		}
+	}
 
-    #region Input Event
-    /// <summary>
-    /// µã°´ÌøÔ¾
-    /// </summary>
-    /// <param name="context"></param>
-    public void Jump(InputAction.CallbackContext context)
-    {
-        //TODO: ²¥·ÅÌøÔ¾µÄÒôĞ§
-        if (context.performed && m_bIsJump == false)
-        {
-            //ÌøÔ¾µÄ¾àÀë
-            m_MoveDistance = jumpDistance;
-            //Ö´ĞĞÌøÔ¾
-            m_bCanJump = true;
+	#region Input Event
+	/// <summary>
+	/// ç‚¹æŒ‰è·³è·ƒ
+	/// </summary>
+	/// <param name="context"></param>
+	public void Jump(InputAction.CallbackContext context)
+	{
+		//TODO: æ’­æ”¾è·³è·ƒçš„éŸ³æ•ˆ
+		if (context.performed && m_bIsJump == false)
+		{
+			//è·³è·ƒçš„è·ç¦»
+			m_MoveDistance = jumpDistance;
+			//æ‰§è¡Œè·³è·ƒ
+			m_bCanJump = true;
 
-            //½öµ±ÏòÉÏÌøÔ¾Ê±¼ÇÂ¼·ÖÊı
-            if (m_enDir == enDirection.enUP)
-            {
-                m_iTotalScore += stepScore;
-            }
-        }
-    }
+			//ä»…å½“å‘ä¸Šè·³è·ƒæ—¶è®°å½•åˆ†æ•°
+			if (m_enDir == enDirection.enUP)
+			{
+				m_iTotalScore += stepScore;
+			}
+		}
+	}
 
-    /// <summary>
-    /// ³¤°´ÌøÔ¾
-    /// </summary>
-    /// <param name="context"></param>
-    public void LongJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && m_bIsJump == false)
-        {
-            m_MoveDistance = jumpDistance * 2;
-            m_bHold = true;
-        }
+	/// <summary>
+	/// é•¿æŒ‰è·³è·ƒ
+	/// </summary>
+	/// <param name="context"></param>
+	public void LongJump(InputAction.CallbackContext context)
+	{
+		if (context.performed && m_bIsJump == false)
+		{
+			m_MoveDistance = jumpDistance * 2;
+			m_bHold = true;
+		}
 
-        //³¤°´½áÊøÇÒ´¦ÓÚµ±Ç°Îª³¤°´×´Ì¬
-        if (context.canceled && m_bHold && m_bIsJump == false)
-        {
-            m_bCanJump = true;
-            m_bHold = false;
+		//é•¿æŒ‰ç»“æŸä¸”å¤„äºå½“å‰ä¸ºé•¿æŒ‰çŠ¶æ€
+		if (context.canceled && m_bHold && m_bIsJump == false)
+		{
+			m_bCanJump = true;
+			m_bHold = false;
 
-            //½öµ±ÏòÉÏÌøÔ¾Ê±¼ÇÂ¼·ÖÊı
-            if (m_enDir == enDirection.enUP)
-            {
-                m_iTotalScore += stepScore * 2;
-            }
-        }
-    }
+			//ä»…å½“å‘ä¸Šè·³è·ƒæ—¶è®°å½•åˆ†æ•°
+			if (m_enDir == enDirection.enUP)
+			{
+				m_iTotalScore += stepScore * 2;
+			}
+		}
+	}
 
-    /// <summary>
-    /// »ñÈ¡µã»÷µÄµã×ø±ê
-    /// </summary>
-    /// <param name="context"></param>
-    public void GetTouchPosition(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            m_TouchPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            var offset = ((Vector3)m_TouchPosition - transform.position).normalized;
-            if (Mathf.Abs(offset.x) <= 0.7f)
-            {
-                m_enDir = enDirection.enUP;
-            }
-            else if (offset.x < 0)
-            {
-                m_enDir = enDirection.enLeft;
-            }
-            else if (offset.x > 0)
-            {
-                m_enDir = enDirection.enRight;
-            }
-        }
-    }
-    #endregion
+	/// <summary>
+	/// è·å–ç‚¹å‡»çš„ç‚¹åæ ‡
+	/// </summary>
+	/// <param name="context"></param>
+	public void GetTouchPosition(InputAction.CallbackContext context)
+	{
+		if (context.performed)
+		{
+			m_TouchPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+			var offset = ((Vector3)m_TouchPosition - transform.position).normalized;
+			if (Mathf.Abs(offset.x) <= 0.7f)
+			{
+				m_enDir = enDirection.enUP;
+			}
+			else if (offset.x < 0)
+			{
+				m_enDir = enDirection.enLeft;
+			}
+			else if (offset.x > 0)
+			{
+				m_enDir = enDirection.enRight;
+			}
+		}
+	}
+	#endregion
 
-    /// <summary>
-    /// ´¥·¢ÌøÔ¾¶¯»­
-    /// </summary>
-    public void JumpTrigger()
-    {
-        m_bCanJump = false;
-        switch (m_enDir)
-        {
-            case enDirection.enUP:
-                //ĞŞ¸Ä¶¯»­ÇĞ»»²ÎÊı
-                anim.SetBool("IsSide", false);
-                //»ñÈ¡ÌøÔ¾ºóµÄ×ø±ê
-                m_Destination = new Vector2(transform.position.x, transform.position.y + m_MoveDistance);
-                break;
-            case enDirection.enLeft:
-                //ĞŞ¸Ä¶¯»­ÇĞ»»²ÎÊı
-                anim.SetBool("IsSide", true);
-                //»ñÈ¡ÌøÔ¾ºóµÄ×ø±ê
-                m_Destination = new Vector2(transform.position.x - m_MoveDistance, transform.position.y);
-                //ĞŞ¸ÄËõ·Å¾ØÕó Vector3.one = (1, 1, 1)
-                transform.localScale = Vector3.one;
-                break;
-            case enDirection.enRight:
-                //ĞŞ¸Ä¶¯»­ÇĞ»»²ÎÊı
-                anim.SetBool("IsSide", true);
-                //»ñÈ¡ÌøÔ¾ºóµÄ×ø±ê
-                m_Destination = new Vector2(transform.position.x + m_MoveDistance, transform.position.y);
-                //ĞŞ¸ÄËõ·Å¾ØÕó
-                transform.localScale = new Vector3(-1, 1, 1);
-                break;
-        }
+	/// <summary>
+	/// è§¦å‘è·³è·ƒåŠ¨ç”»
+	/// </summary>
+	public void JumpTrigger()
+	{
+		m_bCanJump = false;
+		switch (m_enDir)
+		{
+			case enDirection.enUP:
+				//ä¿®æ”¹åŠ¨ç”»åˆ‡æ¢å‚æ•°
+				anim.SetBool("IsSide", false);
+				//è·å–è·³è·ƒåçš„åæ ‡
+				m_Destination = new Vector2(transform.position.x, transform.position.y + m_MoveDistance);
+				break;
+			case enDirection.enLeft:
+				//ä¿®æ”¹åŠ¨ç”»åˆ‡æ¢å‚æ•°
+				anim.SetBool("IsSide", true);
+				//è·å–è·³è·ƒåçš„åæ ‡
+				m_Destination = new Vector2(transform.position.x - m_MoveDistance, transform.position.y);
+				//ä¿®æ”¹ç¼©æ”¾çŸ©é˜µ Vector3.one = (1, 1, 1)
+				transform.localScale = Vector3.one;
+				break;
+			case enDirection.enRight:
+				//ä¿®æ”¹åŠ¨ç”»åˆ‡æ¢å‚æ•°
+				anim.SetBool("IsSide", true);
+				//è·å–è·³è·ƒåçš„åæ ‡
+				m_Destination = new Vector2(transform.position.x + m_MoveDistance, transform.position.y);
+				//ä¿®æ”¹ç¼©æ”¾çŸ©é˜µ
+				transform.localScale = new Vector3(-1, 1, 1);
+				break;
+		}
 
-        //´¥·¢Jump¶¯»­
-        anim.SetTrigger("Jump");
-    }
+		//è§¦å‘JumpåŠ¨ç”»
+		anim.SetTrigger("Jump");
+	}
 
-    #region Animation Event
-    /// <summary>
-    /// ÌøÔ¾¶¯»­¿ªÊ¼Ê±¼ä
-    /// </summary>
-    public void StartJumpAnimationEvent()
-    {
-        //¶¯»­¿ªÊ¼£¬¸Ä±äÒÑ¾­ÌøÔ¾µÄ×´Ì¬
-        m_bIsJump = true;
+	#region Animation Event
+	/// <summary>
+	/// è·³è·ƒåŠ¨ç”»å¼€å§‹æ—¶é—´
+	/// </summary>
+	public void StartJumpAnimationEvent()
+	{
+		//åŠ¨ç”»å¼€å§‹ï¼Œæ”¹å˜å·²ç»è·³è·ƒçš„çŠ¶æ€
+		m_bIsJump = true;
 
-        //ĞŞ¸ÄÅÅĞòÍ¼²ã
-        spRender.sortingLayerName = "Top Layer";
+		//ä¿®æ”¹æ’åºå›¾å±‚
+		spRender.sortingLayerName = "Top Layer";
 
-        //ĞŞ¸ÄFrogµÄ¸¸¼¶½áµã
-        transform.parent = null;
-    }
+		//ä¿®æ”¹Frogçš„çˆ¶çº§ç»“ç‚¹
+		transform.parent = null;
+	}
 
-    /// <summary>
-    /// ÌøÔ¾¶¯»­Íê³ÉÊ±¼ä
-    /// </summary>
-    public void FinishJumpAnimationEvent()
-    {
-        //¶¯»­½áÊø£¬ÖØÖÃÒÑ¾­ÌøÔ¾µÄ×´Ì¬
-        m_bIsJump = false;
+	/// <summary>
+	/// è·³è·ƒåŠ¨ç”»å®Œæˆæ—¶é—´
+	/// </summary>
+	public void FinishJumpAnimationEvent()
+	{
+		//åŠ¨ç”»ç»“æŸï¼Œé‡ç½®å·²ç»è·³è·ƒçš„çŠ¶æ€
+		m_bIsJump = false;
 
-        //ĞŞ¸ÄÅÅĞòÍ¼²ã
-        spRender.sortingLayerName = "Middle Layer";
+		//ä¿®æ”¹æ’åºå›¾å±‚
+		spRender.sortingLayerName = "Middle Layer";
 
-        if (m_enDir == enDirection.enUP && m_bIsDead == false)
-        {
-            //´¥·¢µÃ·Ö¡¢µØĞÎ¼ì²â
-            EventHandler.CallGetScoreEvent(m_iTotalScore);
-        }
-    }
-    #endregion
+		if (m_enDir == enDirection.enUP && m_bIsDead == false)
+		{
+			//è§¦å‘å¾—åˆ†ã€åœ°å½¢æ£€æµ‹
+			EventHandler.CallGetScoreEvent(m_iTotalScore);
+		}
+	}
+	#endregion
 
-    /// <summary>
-    /// Èôm_bIsDead == true, ½ûÓÃPlayer Input
-    /// </summary>
-    private void DisableInput()
-    {
-        playerInput.enabled = false;
-    }
+	/// <summary>
+	/// è‹¥m_bIsDead == true, ç¦ç”¨Player Input
+	/// </summary>
+	private void DisableInput()
+	{
+		playerInput.enabled = false;
+	}
 }

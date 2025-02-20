@@ -4,105 +4,105 @@ using UnityEngine;
 
 public class TerrainManager : MonoBehaviour
 {
-    /// <summary>
-    /// µØĞÎ×ø±êÓëÏà»ú×ø±êµÄÆ«ÒÆ²îÖµ
-    /// </summary>
-    public float offsetY;
-    /// <summary>
-    /// µØĞÎ¶ÔÏóÁĞ±í
-    /// </summary>
-    public List<GameObject> terrainObjs;
-    
-    /// <summary>
-    /// µ±Ç°Éú³ÉµÄµØĞÎ¶ÔÏó
-    /// </summary>
-    private GameObject terrainObj;
-    /// <summary>
-    /// ÉÏÒ»´ÎÉú³ÉµÄµØĞÎ¶ÔÓ¦µÄListË÷Òı
-    /// </summary>
-    private int m_lastIndex = -1;
-    /// <summary>
-    /// ÉÏÒ»´ÎÉú³ÉµÄµØĞÎ¶ÔÓ¦µÄ×ø±ê
-    /// </summary>
-    private Vector3 m_LastPosition;
+	/// <summary>
+	/// åœ°å½¢åæ ‡ä¸ç›¸æœºåæ ‡çš„åç§»å·®å€¼
+	/// </summary>
+	public float offsetY;
+	/// <summary>
+	/// åœ°å½¢å¯¹è±¡åˆ—è¡¨
+	/// </summary>
+	public List<GameObject> terrainObjs;
+	
+	/// <summary>
+	/// å½“å‰ç”Ÿæˆçš„åœ°å½¢å¯¹è±¡
+	/// </summary>
+	private GameObject terrainObj;
+	/// <summary>
+	/// ä¸Šä¸€æ¬¡ç”Ÿæˆçš„åœ°å½¢å¯¹åº”çš„Listç´¢å¼•
+	/// </summary>
+	private int m_lastIndex = -1;
+	/// <summary>
+	/// ä¸Šä¸€æ¬¡ç”Ÿæˆçš„åœ°å½¢å¯¹åº”çš„åæ ‡
+	/// </summary>
+	private Vector3 m_LastPosition;
 
-    private void OnEnable()
-    {
-        EventHandler.GetScoreEvent += OnGetScoreEvent;
-    }
+	private void OnEnable()
+	{
+		EventHandler.GetScoreEvent += OnGetScoreEvent;
+	}
 
-    private void OnDisable()
-    {
-        EventHandler.GetScoreEvent -= OnGetScoreEvent;
-    }
+	private void OnDisable()
+	{
+		EventHandler.GetScoreEvent -= OnGetScoreEvent;
+	}
 
-    private void OnGetScoreEvent(int obj)
-    {
-        CheckPosition();
-    }
+	private void OnGetScoreEvent(int obj)
+	{
+		CheckPosition();
+	}
 
-    /// <summary>
-    /// ¼ì²âµØĞÎ×ø±ê£¬ÈôÂú×ãÌõ¼ş£¬ÔòÉú³ÉĞÂµÄµØĞÎ
-    /// </summary>
-    public void CheckPosition()
-    {
-        if (transform.position.y - Camera.main.transform.position.y < offsetY / 2)
-        {
-            //¼ÆËãµØĞÎµÄ×ø±ê
-            transform.position = new Vector3(0, Camera.main.transform.position.y + offsetY, 0);
-            //Éú³ÉĞÂµÄµØĞÎ
-            SpawnTerrain();
-        }
-    }
+	/// <summary>
+	/// æ£€æµ‹åœ°å½¢åæ ‡ï¼Œè‹¥æ»¡è¶³æ¡ä»¶ï¼Œåˆ™ç”Ÿæˆæ–°çš„åœ°å½¢
+	/// </summary>
+	public void CheckPosition()
+	{
+		if (transform.position.y - Camera.main.transform.position.y < offsetY / 2)
+		{
+			//è®¡ç®—åœ°å½¢çš„åæ ‡
+			transform.position = new Vector3(0, Camera.main.transform.position.y + offsetY, 0);
+			//ç”Ÿæˆæ–°çš„åœ°å½¢
+			SpawnTerrain();
+		}
+	}
 
-    /// <summary>
-    /// Ëæ»úÉú³ÉµØĞÎ
-    /// </summary>
-    private void SpawnTerrain()
-    {
-        var iIndex = Random.Range(0, terrainObjs.Count);
-        //Ê¹Ëæ»úÉú³ÉµÄµØĞÎ²»»á³öÏÖÁ½¸öÏàÍ¬µÄµØĞÎ
-        while (iIndex == m_lastIndex)
-        {
-            iIndex = Random.Range(0, terrainObjs.Count);
-        }
-        terrainObj = terrainObjs[iIndex];
+	/// <summary>
+	/// éšæœºç”Ÿæˆåœ°å½¢
+	/// </summary>
+	private void SpawnTerrain()
+	{
+		var iIndex = Random.Range(0, terrainObjs.Count);
+		//ä½¿éšæœºç”Ÿæˆçš„åœ°å½¢ä¸ä¼šå‡ºç°ä¸¤ä¸ªç›¸åŒçš„åœ°å½¢
+		while (iIndex == m_lastIndex)
+		{
+			iIndex = Random.Range(0, terrainObjs.Count);
+		}
+		terrainObj = terrainObjs[iIndex];
 
-        //µÚÒ»´Î³öÏÖµÄ³¡¾°²»¿ÉÎªRoad
-        if (m_lastIndex == -1 && terrainObj.name == "Road")
-        {
-            while (terrainObj.name == "Road")
-            {
-                iIndex = Random.Range(0, terrainObjs.Count);
-                terrainObj = terrainObjs[iIndex];
-            }
-        }
+		//ç¬¬ä¸€æ¬¡å‡ºç°çš„åœºæ™¯ä¸å¯ä¸ºRoad
+		if (m_lastIndex == -1 && terrainObj.name == "Road")
+		{
+			while (terrainObj.name == "Road")
+			{
+				iIndex = Random.Range(0, terrainObjs.Count);
+				terrainObj = terrainObjs[iIndex];
+			}
+		}
 
-        //ÅĞ¶ÏĞÂµÄµØĞÎÊÇ·ñºÍµ±Ç°µØĞÎÖØµş
-        if (m_lastIndex != -1)
-        {
-            var LastBoxSize = terrainObjs[m_lastIndex].GetComponent<BoxCollider2D>().size;
-            var NewBoxSize = terrainObj.GetComponent<BoxCollider2D>().size;
-            float rNewOffsetY = (LastBoxSize.y + NewBoxSize.y) / 2 + 0.5f;
-            transform.position = new Vector3(0, m_LastPosition.y + rNewOffsetY, 0);
+		//åˆ¤æ–­æ–°çš„åœ°å½¢æ˜¯å¦å’Œå½“å‰åœ°å½¢é‡å 
+		if (m_lastIndex != -1)
+		{
+			var LastBoxSize = terrainObjs[m_lastIndex].GetComponent<BoxCollider2D>().size;
+			var NewBoxSize = terrainObj.GetComponent<BoxCollider2D>().size;
+			float rNewOffsetY = (LastBoxSize.y + NewBoxSize.y) / 2 + 0.5f;
+			transform.position = new Vector3(0, m_LastPosition.y + rNewOffsetY, 0);
 
-            Debug.Log("1.2-Name: " + terrainObjs[m_lastIndex].name + ", position = " + m_LastPosition + "rNewOffsetY: " + rNewOffsetY);
-            Debug.Log("2.2-Name: " + terrainObj.name + ", position = " + transform.position);
-        }
-        else
-        {
-            var BoxSize = terrainObjs[iIndex].GetComponent<BoxCollider2D>().size;
-            float rNewOffsetY = BoxSize.y / 2 + offsetY / 2  + 1.2f;
-            transform.position = new Vector3(0, Camera.main.transform.position.y + rNewOffsetY, 0);
+			Debug.Log("1.2-Name: " + terrainObjs[m_lastIndex].name + ", position = " + m_LastPosition + "rNewOffsetY: " + rNewOffsetY);
+			Debug.Log("2.2-Name: " + terrainObj.name + ", position = " + transform.position);
+		}
+		else
+		{
+			var BoxSize = terrainObjs[iIndex].GetComponent<BoxCollider2D>().size;
+			float rNewOffsetY = BoxSize.y / 2 + offsetY / 2  + 1.2f;
+			transform.position = new Vector3(0, Camera.main.transform.position.y + rNewOffsetY, 0);
 
-            Debug.Log("1.1-Name: " + terrainObjs[iIndex].name + ", position = " + m_LastPosition + "rNewOffsetY: " + rNewOffsetY);
-            Debug.Log("2.1-Name: " + terrainObj.name + ", position = " + transform.position);
-        }
+			Debug.Log("1.1-Name: " + terrainObjs[iIndex].name + ", position = " + m_LastPosition + "rNewOffsetY: " + rNewOffsetY);
+			Debug.Log("2.1-Name: " + terrainObj.name + ", position = " + transform.position);
+		}
 
-        //ÊµÀı»¯ĞÂµØĞÎ
-        m_lastIndex = iIndex;
-        m_LastPosition = transform.position;
-        Instantiate(terrainObj, transform.position, Quaternion.identity);
-    }
+		//å®ä¾‹åŒ–æ–°åœ°å½¢
+		m_lastIndex = iIndex;
+		m_LastPosition = transform.position;
+		Instantiate(terrainObj, transform.position, Quaternion.identity);
+	}
 
 }

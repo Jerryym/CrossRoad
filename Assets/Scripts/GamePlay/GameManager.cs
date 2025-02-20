@@ -6,78 +6,78 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+	public static GameManager instance;
 
-    /// <summary>
-    /// ·ÖÊı±í
-    /// ÅÅĞò£º´Ó´óµ½Ğ¡
-    /// </summary>
-    public List<int> m_scoreList;
-    /// <summary>
-    /// µ±Ç°·ÖÊı
-    /// </summary>s
-    private int m_iScore;
-    /// <summary>
-    /// ±£´æÎÄ¼şµÄÂ·¾¶
-    /// </summary>
-    private string m_dataPath;
+	/// <summary>
+	/// åˆ†æ•°è¡¨
+	/// æ’åºï¼šä»å¤§åˆ°å°
+	/// </summary>
+	public List<int> m_scoreList;
+	/// <summary>
+	/// å½“å‰åˆ†æ•°
+	/// </summary>s
+	private int m_iScore;
+	/// <summary>
+	/// ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
+	/// </summary>
+	private string m_dataPath;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+	private void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else
+		{
+			Destroy(this.gameObject);
+		}
 
-        m_dataPath = Application.persistentDataPath + "/LeaderBoard.json";
-        m_scoreList = GetScoreListData();
-        DontDestroyOnLoad(this);
-    }
+		m_dataPath = Application.persistentDataPath + "/LeaderBoard.json";
+		m_scoreList = GetScoreListData();
+		DontDestroyOnLoad(this);
+	}
 
-    private void OnEnable()
-    {
-        EventHandler.GameOverEvent += OnGameOverEvent;
-        EventHandler.GetScoreEvent += OnGetScoreEvent;
-    }
+	private void OnEnable()
+	{
+		EventHandler.GameOverEvent += OnGameOverEvent;
+		EventHandler.GetScoreEvent += OnGetScoreEvent;
+	}
 
-    private void OnDisable()
-    {
-        EventHandler.GameOverEvent -= OnGameOverEvent;
-        EventHandler.GetScoreEvent -= OnGetScoreEvent;
-    }
+	private void OnDisable()
+	{
+		EventHandler.GameOverEvent -= OnGameOverEvent;
+		EventHandler.GetScoreEvent -= OnGetScoreEvent;
+	}
 
-    private void OnGetScoreEvent(int iScore)
-    {
-        m_iScore = iScore;
-    }
+	private void OnGetScoreEvent(int iScore)
+	{
+		m_iScore = iScore;
+	}
 
-    private void OnGameOverEvent()
-    {
-        //ÏàÍ¬·ÖÊı²»ÖØ¸´¼ÇÂ¼
-        if (m_scoreList.Contains(m_iScore) == false)
-        {
-            m_scoreList.Add(m_iScore);
-        }
+	private void OnGameOverEvent()
+	{
+		//ç›¸åŒåˆ†æ•°ä¸é‡å¤è®°å½•
+		if (m_scoreList.Contains(m_iScore) == false)
+		{
+			m_scoreList.Add(m_iScore);
+		}
 
-        m_scoreList.Sort((x, y) => -x.CompareTo(y));//½µĞò
-        File.WriteAllText(m_dataPath, JsonConvert.SerializeObject(m_scoreList));
-    }
+		m_scoreList.Sort((x, y) => -x.CompareTo(y));//é™åº
+		File.WriteAllText(m_dataPath, JsonConvert.SerializeObject(m_scoreList));
+	}
 
-    /// <summary>
-    /// »ñÈ¡jsonÖĞÊı¾İ
-    /// </summary>
-    /// <returns></returns>
-    public List<int> GetScoreListData()
-    {
-        if (File.Exists(m_dataPath) == true)
-        {
-            string jsonData = File.ReadAllText(m_dataPath);
-            return JsonConvert.DeserializeObject<List<int>>(jsonData);
-        }
-        return new List<int> { 0 };
-    }
+	/// <summary>
+	/// è·å–jsonä¸­æ•°æ®
+	/// </summary>
+	/// <returns></returns>
+	public List<int> GetScoreListData()
+	{
+		if (File.Exists(m_dataPath) == true)
+		{
+			string jsonData = File.ReadAllText(m_dataPath);
+			return JsonConvert.DeserializeObject<List<int>>(jsonData);
+		}
+		return new List<int> { 0 };
+	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     /// <summary>
-    /// 当前视口高度
+    /// 褰撳墠瑙嗗彛楂樺害
     /// </summary>
     private float m_rHeight;
 
@@ -24,7 +24,7 @@ public class Block : MonoBehaviour
     {
         if (Camera.main.transform.position.y - transform.position.y > m_rHeight + 15)
         {
-            Destroy(this.gameObject);
+			Destroy(this.gameObject);
         }
     }
 }

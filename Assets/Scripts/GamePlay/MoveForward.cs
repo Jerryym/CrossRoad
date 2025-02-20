@@ -5,20 +5,20 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     /// <summary>
-    /// Æû³µÄ£ĞÍÒÆ¶¯ËÙ¶È
+    /// æ±½è½¦æ¨¡å‹ç§»åŠ¨é€Ÿåº¦
     /// </summary>
     public float Speed = 2.0f;
     /// <summary>
-    /// Ä£ĞÍ³õÊ¼Î»ÖÃ
+    /// æ¨¡å‹åˆå§‹ä½ç½®
     /// </summary>
     private Vector2 m_StartPos;
     /// <summary>
-    /// ÒÆ¶¯·½Ïò£¨ÏòÓÒ = 1 | Ïò×ó = -1£©
+    /// ç§»åŠ¨æ–¹å‘ï¼ˆå‘å³ = 1 | å‘å·¦ = -1ï¼‰
     /// </summary>
     private int m_moveDir;
 
     /// <summary>
-    /// µ±Ç°ÊÓ¿Ú¿í¶È
+    /// å½“å‰è§†å£å®½åº¦
     /// </summary>
     private float m_rWidth;
     
@@ -40,15 +40,15 @@ public class MoveForward : MonoBehaviour
 
     public void setMoveDirection(int Dir)
     {
-        m_moveDir = Dir;
+		m_moveDir = Dir;
     }
 
     /// <summary>
-    /// ÒÆ¶¯º¯Êı
+    /// ç§»åŠ¨å‡½æ•°
     /// </summary>
     private void Move()
     {
-        //¼ÆËãÄ£ĞÍÎ»ÖÃ
+        //è®¡ç®—æ¨¡å‹ä½ç½®
         transform.position += transform.right * Speed * Time.deltaTime * m_moveDir;
     }
 }

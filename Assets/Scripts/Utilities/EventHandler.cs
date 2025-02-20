@@ -7,7 +7,7 @@ using UnityEngine;
 public class EventHandler
 {
     /// <summary>
-    /// 得分事件
+    /// 寰楀垎浜嬩欢
     /// </summary>
     public static event Action<int> GetScoreEvent;
     public static void CallGetScoreEvent(int iScore)
@@ -19,14 +19,14 @@ public class EventHandler
     }
 
     /// <summary>
-    /// 死亡游戏结束事件
+    /// 姝讳骸娓告垙缁撴潫浜嬩欢
     /// </summary>
     public static event Action GameOverEvent;
     public static void CallGameOverEvent()
     {
         if (GameOverEvent != null)
         {
-            GameOverEvent.Invoke();
+			GameOverEvent.Invoke();
         }
     }
 }

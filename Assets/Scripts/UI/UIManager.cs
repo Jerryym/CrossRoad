@@ -6,69 +6,69 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public Text scoreText;
-    public GameObject GameOverPanel;
-    public GameObject LeaderBoardPanel;
+	public Text scoreText;
+	public GameObject GameOverPanel;
+	public GameObject LeaderBoardPanel;
 
-    private void OnEnable()
-    {
-        Time.timeScale = 1.0f;
-        EventHandler.GetScoreEvent += OnGetScoreEvent;
-        EventHandler.GameOverEvent += OnGameOverEvent;
-    }
+	private void OnEnable()
+	{
+		Time.timeScale = 1.0f;
+		EventHandler.GetScoreEvent += OnGetScoreEvent;
+		EventHandler.GameOverEvent += OnGameOverEvent;
+	}
 
-    private void OnDisable()
-    {
-        EventHandler.GetScoreEvent -= OnGetScoreEvent; 
-        EventHandler.GameOverEvent -= OnGameOverEvent;
-    }
+	private void OnDisable()
+	{
+		EventHandler.GetScoreEvent -= OnGetScoreEvent; 
+		EventHandler.GameOverEvent -= OnGameOverEvent;
+	}
 
-    private void Start()
-    {
-        //³õÊ¼»¯ÎÄ±¾
-        scoreText.text = "00";
-    }
+	private void Start()
+	{
+		//åˆå§‹åŒ–æ–‡æœ¬
+		scoreText.text = "00";
+	}
 
-    #region Button Event
-    /// <summary>
-    /// ÖØĞÂ¿ªÊ¼ÓÎÏ·
-    /// </summary>
-    public void ReStartGame()
-    {
-        GameOverPanel.SetActive(false);
-        TransitionManager.instance.Transition(SceneManager.GetActiveScene().name);
-    }
+	#region Button Event
+	/// <summary>
+	/// é‡æ–°å¼€å§‹æ¸¸æˆ
+	/// </summary>
+	public void ReStartGame()
+	{
+		GameOverPanel.SetActive(false);
+		TransitionManager.instance.Transition(SceneManager.GetActiveScene().name);
+	}
 
-    /// <summary>
-    /// ·µ»ØÖ÷²Ëµ¥
-    /// </summary>
-    public void BackToMenu()
-    {
-        GameOverPanel.SetActive(false);
-        TransitionManager.instance.Transition("MainWindow");
-    }
+	/// <summary>
+	/// è¿”å›ä¸»èœå•
+	/// </summary>
+	public void BackToMenu()
+	{
+		GameOverPanel.SetActive(false);
+		TransitionManager.instance.Transition("MainWindow");
+	}
 
-    public void OpenLeaderBoard()
-    {
-        LeaderBoardPanel.SetActive(true);
-    }
+	public void OpenLeaderBoard()
+	{
+		LeaderBoardPanel.SetActive(true);
+	}
 
-    #endregion
+	#endregion
 
-    private void OnGetScoreEvent(int obj)
-    {
-        //ĞŞ¸Ä·ÖÊıÎÄ±¾
-        scoreText.text = obj.ToString();
-    }
+	private void OnGetScoreEvent(int obj)
+	{
+		//ä¿®æ”¹åˆ†æ•°æ–‡æœ¬
+		scoreText.text = obj.ToString();
+	}
 
-    private void OnGameOverEvent()
-    {
-        //¼¤»îGameOverPanel
-        GameOverPanel.SetActive(true);
-        //ÔİÍ£ÓÎÏ·
-        if (GameOverPanel.activeInHierarchy == true)
-        {
-            Time.timeScale = 0.0f;
-        }
-    }
+	private void OnGameOverEvent()
+	{
+		//æ¿€æ´»GameOverPanel
+		GameOverPanel.SetActive(true);
+		//æš‚åœæ¸¸æˆ
+		if (GameOverPanel.activeInHierarchy == true)
+		{
+			Time.timeScale = 0.0f;
+		}
+	}
 }

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ScoreRecord : MonoBehaviour
 {
-    public Text scoreText;
+	public Text scoreText;
 
-    public void SetScoreText(int iScore)
-    {
-        scoreText.text = iScore.ToString();
-    }
+	public void SetScoreText(int iScore)
+	{
+		scoreText.text = iScore.ToString();
+	}
 }

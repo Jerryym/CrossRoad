@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    /// <summary>
-    /// ÒÆ¶¯·½Ïò£¨ÏòÓÒ = 1 | Ïò×ó = -1£©
-    /// </summary>
-    public int direction;
-    /// <summary>
-    /// Ä£ĞÍ¶ÔÏóÁĞ±í
-    /// </summary>
-    public List<GameObject> spawnObjects;
+	/// <summary>
+	/// ç§»åŠ¨æ–¹å‘ï¼ˆå‘å³ = 1 | å‘å·¦ = -1ï¼‰
+	/// </summary>
+	public int direction;
+	/// <summary>
+	/// æ¨¡å‹å¯¹è±¡åˆ—è¡¨
+	/// </summary>
+	public List<GameObject> spawnObjects;
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(Spawn), 0.2f, Random.Range(5f, 8f));
-    }
+	private void Start()
+	{
+		InvokeRepeating(nameof(Spawn), 0.2f, Random.Range(5f, 8f));
+	}
 
-    /// <summary>
-    /// Ëæ»úÉú³ÉgameObj
-    /// </summary>
-    private void Spawn()
-    {
-        var iIndex = Random.Range(0, spawnObjects.Count);
-        var spawObj = Instantiate(spawnObjects[iIndex], transform.position, Quaternion.identity, transform);
-        spawObj.GetComponent<MoveForward>().setMoveDirection(direction);//ÉèÖÃÄ£ĞÍÒÆ¶¯·½Ïò
-    }
+	/// <summary>
+	/// éšæœºç”ŸæˆgameObj
+	/// </summary>
+	private void Spawn()
+	{
+		var iIndex = Random.Range(0, spawnObjects.Count);
+		var spawObj = Instantiate(spawnObjects[iIndex], transform.position, Quaternion.identity, transform);
+		spawObj.GetComponent<MoveForward>().setMoveDirection(direction);//è®¾ç½®æ¨¡å‹ç§»åŠ¨æ–¹å‘
+	}
 }

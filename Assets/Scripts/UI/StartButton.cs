@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
 {
-    private Button m_startBtn;
+	private Button m_startBtn;
 
-    private void Awake()
-    {
-        m_startBtn = GetComponent<Button>();
-        m_startBtn.onClick.AddListener(StartGame);
-    }
+	private void Awake()
+	{
+		m_startBtn = GetComponent<Button>();
+		m_startBtn.onClick.AddListener(StartGame);
+	}
 
-    /// <summary>
-    /// ¿ªÊ¼ÓÎÏ·
-    /// </summary>
-    private void StartGame()
-    {
-        //Æô¶¯ÓÎÏ·³¡¾°
-        TransitionManager.instance.Transition("GamePlay");
-    }
+	/// <summary>
+	/// å¼€å§‹æ¸¸æˆ
+	/// </summary>
+	private void StartGame()
+	{
+		//å¯åŠ¨æ¸¸æˆåœºæ™¯
+		TransitionManager.instance.Transition("GamePlay");
+	}
 }
